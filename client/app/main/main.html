@@ -1,0 +1,32 @@
+<h1 class="page-header">Dashboard</h1>
+
+<h2>Log</h2>
+<input type="text" class="form-control" ng-model="connection.username" placeholder="Particle e-mail">
+<input type="password" class="form-control" ng-model="connection.password" placeholder="Password">
+
+User: <a href=""> {{connection.username}} </a>
+<h2 class="sub-header">Cores</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Last heard</th>
+      <th>Connect</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="carte in listCarte">
+      <td>{{carte.idCore}}</td>
+      <td>{{carte.name}}</td>
+      <td>{{carte.last_heard}}</td>
+      <td ng-if="carte.connect"><i class="fa fa-check"></i></td>
+      <td ng-if="!carte.connect"><i class="fa fa-times"></i></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<button  type="button" class="btn btn-default"  ng-click="connect()">connexion</button>
+<button  type="button" class="btn btn-default"  ng-click="deleteAll()">déconnexion</button>

@@ -1,0 +1,83 @@
+
+<h1 class="page-header">Core :
+  <div id="Core" class="btn-group" dropdown is-open="">
+    <button type="button" ng-class="isConnect()" dropdown-toggle ng-disabled="disabled">
+      {{listCarte[id].name}} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li ng-repeat="carte in listCarte track by $index" >
+        <a href="" ng-click="refreshCore($index)">{{carte.name}}</a>
+      </li>
+    </ul>
+  </div>
+</h1>
+
+<h1>
+  {{informationSpark}}
+</h1>
+
+<h2>Flash </h2>
+<input type="file" file-model="myFile"/>
+<button ng-click="flash()">flash <i class="fa fa-bolt"></i></button>
+
+<h2 class="page-header">Programme "{{nameProg}}"</h2>
+
+<h3 class="sub-header">Sensors</h3>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Representation</th>
+      <th>Monitor</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="(key,typeSensor) in listDataCarte.variables " ng-init="sectionIndex = $index">
+      <td>{{key}}</td>
+      <td>{{typeSensor}}</td>
+      <td>
+        <div id="TypeGraph" class="btn-group" dropdown is-open="">
+          <button type="button" class="btn dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+            {{typeDraw[sectionIndex]}} <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-repeat="choice in choiceDraw" >
+              <a href="" ng-if="typeSensor == 'string' " ng-click="updateTypeDraw(sectionIndex,choice)">{{choice}}</a>
+            </li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <button  type="button" class="btn btn-default" ng-click="go('/graph/',carteId + '/' + key + '/' + typeSensor + '/' + typeDraw[sectionIndex])">show</button>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="sub-header">Functions</h3>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Args</th>
+      <th></th>
+      <th>Output</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr ng-repeat="funcName in listDataCarte.functions track by $index">
+      <td>{{funcName}}</td>
+      <td><input type="text" ng-model="args[$index]" required> </td>
+      <td><button type="button" class="btn btn-default" ng-click="useFunction(funcName,$index)">Send</button></td>
+      <td>{{reponse.return_value}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

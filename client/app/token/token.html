@@ -1,0 +1,26 @@
+<button type="button" class="btn btn-default" ng-click="clearSelectedToken()">ClearTokens</button>
+<button type="button" class="btn btn-default" ng-click="clearAllToken()">ClearAll</button>
+<h2 class="sub-header">{{arrayToken.tokens.length}} Tokens</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Token</th>
+      <th>Expires_at</th>
+      <th>Client</th>
+      <th>Check</th>
+      <th>Clear</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="token in arrayToken.tokens track by $index">
+      <td>{{token.token}}</td>
+      <td>{{token.expires_at}}</td>
+      <td>{{token.client}}</td>
+      <td><input type="checkbox" ng-click="check()" ng-check='arrayToken.check[$index]' ng-model="arrayToken.check[$index]"></i></td>
+      <td><button type="button" class="btn btn-default" ng-click="clearToken($index)">Clear</button></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

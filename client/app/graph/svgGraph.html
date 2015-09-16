@@ -1,0 +1,32 @@
+<h1>Result Ultrasound Scanner</h1>
+
+<div>
+  <button type="button" class="btn btn-default" ng-click="readData()">Init Scanner</button>
+  <button type="button" class="btn btn-default" ng-click="scanData()">Scan</button>
+  <button type="button" class="btn btn-default" ng-click="clearData()">Clear</button>
+</div>
+
+<div style="width:850px;height:500px">
+  <nvd3-scatter-chart
+    data="coordSvg"
+    id="Svg"
+
+    width="850"
+    height="400"
+    margin="{left:80,top:50,bottom:30,right:50}"
+
+    x="xAxisSvg()"
+    y="yAxisSvg()"
+
+    showLegend="true"
+    showDistX="true"
+    showDistY="true"
+
+    noData="No Data For You!"
+
+    interactive="true"
+    tooltips="true">
+
+    <svg></svg>
+  </nvd3-scatter-chart>
+</div>

@@ -1,0 +1,8 @@
+<div ng-switch="typeGraph">
+  <div ng-switch-when="Map">
+    <div ng-include="'app/graph/svgGraph.html'"></div>
+  </div>
+  <div ng-switch-default>
+    <div ng-include="'app/graph/typeGraph.html'"></div>
+  </div>
+</div>
